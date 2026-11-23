@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Resiste Lab · Reserva tu kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fa;--surf:#fff;--ink:#1b2a35;--mut:#5b6b77;--pet:#1F3A4D;--org:#E8772E;--orgd:#b9540f;--line:#d9e1e7;--hero:#1F3A4D;--herotx:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a22;--surf:#172833;--ink:#e8eef2;--mut:#9fb0bc;--pet:#7fb3d3;--orgd:#f0955a;--line:#2a3f4d;--hero:#12242f}}
+:root[data-theme="dark"]{--bg:#0f1a22;--surf:#172833;--ink:#e8eef2;--mut:#9fb0bc;--pet:#7fb3d3;--orgd:#f0955a;--line:#2a3f4d;--hero:#12242f}
+html{scroll-padding-top:calc(60px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Public Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;line-height:1.05;margin:0 0 .4em;letter-spacing:.01em}
+h2{font-size:2.3rem;color:var(--pet)}h3{font-size:1.4rem}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hero);z-index:20}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:19;background:var(--hero);color:#fff;display:flex;gap:6px;align-items:center;padding:10px 16px;overflow-x:auto;white-space:nowrap}
+nav b{font:700 1.3rem "Barlow Condensed",sans-serif;margin-right:auto;padding-right:14px}
+nav a{text-decoration:none;font-size:.9rem;padding:6px 10px;border-radius:6px;color:#dbe6ee}
+nav a:hover,nav a:focus-visible{background:rgba(255,255,255,.14);color:#fff;outline:none}
+nav .cartb{background:var(--org);color:#1b1206;font-weight:600}
+section{max-width:1060px;margin:0 auto;padding:56px 18px 8px}
+.hero{background:var(--hero);color:var(--herotx);max-width:none;padding:48px 18px}
+.hero>div{max-width:1060px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(3rem,9vw,5.6rem);margin:0}
+.hero h1 span{color:var(--org)}
+.hero p{color:#cfdde7;max-width:46ch}
+.btn{display:inline-block;border:0;border-radius:8px;padding:11px 18px;font:600 1rem "Public Sans",sans-serif;cursor:pointer;background:var(--org);color:#1b1206;text-decoration:none}
+.btn:hover{background:#f08a43}.btn.sec{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid #4aa3df;outline-offset:2px}
+.lab{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:16px;text-align:center}
+.table{height:230px;position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.plat{position:absolute;bottom:0;left:6%;right:6%;height:12px;background:#e9eff3;border-radius:3px}
+.tower{position:relative;display:flex;flex-direction:column-reverse;align-items:center;margin-bottom:12px;will-change:transform}
+.blk{height:30px;border:3px solid #fff;border-radius:3px;background:var(--hero);margin-top:-1px;transition:transform .9s ease-in,opacity .9s}
+.blk.top{background:var(--org);border-color:var(--org)}
+.lab label{display:block;font-size:.9rem;margin:10px 0 2px}.lab input[type=range]{width:100%;accent-color:var(--org)}
+.verd{min-height:1.5em;font-weight:600;margin:6px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:16px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;border-top:4px solid var(--org);background:var(--surf);border-radius:0 0 12px 12px;border:1px solid var(--line);border-top:4px solid var(--org)}
+.steps div{padding:14px;border-right:1px solid var(--line)}.steps div:last-child{border:0}.steps b{color:var(--pet);font-family:"Barlow Condensed";font-size:1.3rem;display:block}
+.prod{display:flex;flex-direction:column;gap:8px}
+.price{font:700 2rem "Barlow Condensed",sans-serif;color:var(--orgd)}
+.prod ul{margin:0;padding-left:18px;color:var(--mut);font-size:.92rem}
+.qty{display:flex;align-items:center;gap:10px;margin-top:auto}
+.qty button{width:36px;height:36px;border-radius:8px;border:1.5px solid var(--pet);background:var(--surf);color:var(--pet);font-size:1.2rem;cursor:pointer}
+.qty output{min-width:28px;text-align:center;font-weight:600}
+.tag{display:inline-block;background:rgba(232,119,46,.16);color:var(--orgd);border-radius:20px;padding:2px 10px;font-size:.8rem;font-weight:600}
+.two{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}
+form label{display:block;font-weight:600;font-size:.9rem;margin:12px 0 3px}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:#c0392b;font-size:.85rem;min-height:1.1em}
+.sum{position:sticky;top:calc(64px + env(safe-area-inset-top,0px))}
+.sum li{display:flex;justify-content:space-between;gap:10px;list-style:none;padding:5px 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+.sum ul{padding:0;margin:8px 0}
+.tot{display:flex;justify-content:space-between;font:700 1.6rem "Barlow Condensed";color:var(--pet)}
+.ok{border:2px solid var(--org);background:var(--surf);border-radius:12px;padding:18px;margin-top:16px}
+.code{font:700 1.8rem "Barlow Condensed";color:var(--orgd);letter-spacing:.08em}
+.wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:480px;background:var(--surf)}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:.93rem}th{background:var(--hero);color:#fff}
+details{background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px}summary{cursor:pointer;font-weight:600}
+.kpi{font:700 2.4rem "Barlow Condensed";color:var(--orgd);line-height:1}
+footer{margin-top:60px;background:var(--hero);color:#cfdde7;padding:26px 18px;text-align:center;font-size:.88rem}
+@media(max-width:760px){.hero>div,.two{grid-template-columns:1fr}.sum{position:static}.row{grid-template-columns:1fr}h2{font-size:2rem}}
+.tabs{display:flex;gap:6px;margin-bottom:12px}.tb{flex:1;padding:9px 6px;border-radius:8px;border:1.5px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:600 .92rem "Public Sans",sans-serif;cursor:pointer}.tb.on{background:var(--org);border-color:var(--org);color:#1b1206}
+.pn[hidden]{display:none}.gl{text-align:left}.gl h4{margin:14px 0 2px;font:700 1.2rem "Barlow Condensed",sans-serif;color:var(--org)}.gl .res{font-weight:600;margin:6px 0}.gl label.ckl{display:flex;gap:8px;align-items:center;margin:4px 0;font-size:.92rem}.rk{text-align:left;font-size:.88rem;padding-left:20px;margin:6px 0}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="Principal">
+<b>RESISTE LAB</b>
+<a href="#kits">Kits</a><a href="#talleres">Talleres y Copa</a><a href="#como">Cómo funciona</a><a href="#mercado">Impacto</a><a href="#faq">Preguntas</a><a href="#mis">Mis reservas</a>
+<a class="cartb" href="#reservar" id="navcart">Reserva (0)</a>
+</nav>
+
+<header class="hero"><div>
+<div>
+<h1>Construye.<br>Sacude.<br><span>Aprende.</span></h1>
+<p>Kits, talleres y torneos de ingeniería civil hechos por estudiantes, para estudiantes. Arma la torre, mídela con sensores y compite en la Copa Resiste.</p>
+<p><a class="btn" href="#kits">Reservar mi kit</a> <a class="btn sec" href="#como">Ver cómo funciona</a></p>
+</div>
+<div class="lab" aria-label="Simuladores de los productos">
+<div class="tabs" role="tablist"><button type="button" class="tb on" data-t="sismo" role="tab">Kit Sismo</button><button type="button" class="tb" data-t="puente" role="tab">Kit Puente</button><button type="button" class="tb" data-t="guia" role="tab">Guía digital</button></div>
+<div class="pn" id="p-sismo">
+<div class="table" id="table"><div class="tower" id="tower"></div><div class="plat"></div></div>
+<label for="nb">Pisos de la torre: <b id="nbv">5</b></label>
+<input type="range" id="nb" min="2" max="6" value="5">
+<label for="int">Intensidad del sismo: <b id="intv">4</b></label>
+<input type="range" id="int" min="1" max="10" value="4">
+<div class="verd" id="verd" aria-live="polite">Ajusta y sacude la torre.</div>
+<button class="btn" id="shake" type="button">Sacudir</button>
+<button class="btn sec" id="card" type="button">Carta de Reto</button>
+<p><button class="btn sec add" type="button" data-id="sismo" data-l="Agregar Kit Sismo a mi reserva">Agregar Kit Sismo a mi reserva</button></p>
+</div>
+<div class="pn" id="p-puente" hidden>
+<svg id="bsvg" viewBox="0 0 400 200" width="100%" role="img" aria-label="Puente de palillos bajo carga"><rect x="20" y="108" width="30" height="80" rx="3" fill="#e9eff3"/><rect x="350" y="108" width="30" height="80" rx="3" fill="#e9eff3"/><g id="bridge"></g><g id="wt"></g></svg>
+<label for="pal">Palillos usados: <b id="palv">60</b></label><input type="range" id="pal" min="20" max="120" value="60">
+<label for="dis">Diseño del puente</label><select id="dis"><option value="viga">Viga simple</option><option value="warren">Armadura Warren</option><option value="pratt">Armadura Pratt</option></select>
+<div class="verd" id="bv" aria-live="polite">Elige el diseño y carga el puente hasta que falle.</div>
+<button class="btn" id="load" type="button">Cargar hasta que falle</button>
+<div id="addrk" style="display:none;margin-top:10px"><input id="team" placeholder="Nombre de tu equipo" aria-label="Nombre de tu equipo" style="max-width:220px"> <button class="btn sec" id="rkbtn" type="button">Subir a la Copa</button></div>
+<ol class="rk" id="rk"></ol>
+<p><button class="btn sec add" type="button" data-id="puente" data-l="Agregar Kit Puente a mi reserva">Agregar Kit Puente a mi reserva</button></p>
+</div>
+<div class="pn gl" id="p-guia" hidden>
+<h4>Frecuencia natural (Kit Sismo)</h4>
+<div class="row"><div><label for="go">Oscilaciones contadas</label><input id="go" type="number" min="1" value="10"></div><div><label for="gt">Tiempo total (s)</label><input id="gt" type="number" step="0.1" min="0" value="6.5"></div></div>
+<div class="res" id="gr1"></div>
+<h4>Eficiencia del puente (Kit Puente)</h4>
+<div class="row"><div><label for="gc">Carga de rotura (g)</label><input id="gc" type="number" min="0" value="9000"></div><div><label for="gp">Peso del puente (g)</label><input id="gp" type="number" min="0" value="18"></div></div>
+<div class="res" id="gr2"></div>
+<h4>Mis prácticas de la guía</h4>
+<div id="cks"><label class="ckl"><input class="ck" type="checkbox" style="width:auto"> Frecuencia natural de la torre</label><label class="ckl"><input class="ck" type="checkbox" style="width:auto"> Efecto de la altura</label><label class="ckl"><input class="ck" type="checkbox" style="width:auto"> Amortiguamiento</label><label class="ckl"><input class="ck" type="checkbox" style="width:auto"> Carga de rotura del puente</label><label class="ckl"><input class="ck" type="checkbox" style="width:auto"> Eficiencia y costo</label></div>
+<progress id="gpg" max="5" value="0" style="width:100%;accent-color:var(--org)"></progress> <small id="gpt">0 de 5 prácticas</small>
+<p style="text-align:center"><button class="btn sec add" type="button" data-id="guia" data-l="Agregar Guía digital a mi reserva">Agregar Guía digital a mi reserva</button></p>
+</div>
+</div>
+</div></header>
+
+<section id="kits">
+<h2>Elige tus kits</h2>
+<p style="color:var(--mut)">Material didáctico de baja tensión (USB 5 V), recomendado para mayores de 12 años con supervisión. No reemplaza ensayos certificados.</p>
+<div class="grid" id="catalog"></div>
+</section>
+
+<section id="reservar">
+<h2>Reserva tu pedido</h2>
+<div class="two">
+<form id="form" novalidate>
+<div class="card">
+<div class="row"><div><label for="nom">Nombre completo</label><input id="nom" autocomplete="name"><div class="err" id="e-nom"></div></div>
+<div><label for="mail">Correo</label><input id="mail" type="email" autocomplete="email"><div class="err" id="e-mail"></div></div></div>
+<div class="row"><div><label for="wa">WhatsApp</label><input id="wa" type="tel" autocomplete="tel"><div class="err" id="e-wa"></div></div>
+<div><label for="inst">Institución</label><input id="inst" placeholder="Universidad, colegio o instituto"></div></div>
+<div class="row"><div><label for="perfil">Perfil</label><select id="perfil"><option>Estudiante universitario</option><option>Estudiante de bachillerato</option><option>Docente</option><option>Club estudiantil</option><option>Otro</option></select></div>
+<div><label for="desc">Descuento</label><select id="desc"><option value="0">Ninguno</option><option value="edu">Educativo: docentes y colegios (10 %)</option><option value="ref">Referido por un amigo (10 %)</option></select></div></div>
+<div class="row"><div><label for="ent">Entrega</label><select id="ent"><option value="campus">Entrega en campus (gratis)</option><option value="envio">Envío por mensajería (a coordinar)</option></select></div>
+<div><label for="fecha">Fecha preferida</label><input id="fecha" type="date"><div class="err" id="e-fecha"></div></div></div>
+<label for="pago">Forma de pago</label><select id="pago"><option>Transferencia</option><option>Pago en la entrega</option><option>Preventa con anticipo del 50 %</option></select>
+<label for="nota">Notas</label><textarea id="nota" rows="2"></textarea>
+<label style="font-weight:400"><input type="checkbox" id="ter" style="width:auto"> Acepto que mis datos se usen solo para gestionar esta reserva. Si soy menor, cuento con autorización de mis padres o del colegio.</label>
+<div class="err" id="e-ter"></div>
+<button class="btn" type="submit" style="margin-top:8px">Confirmar reserva</button>
+</div>
+<div id="result"></div>
+</form>
+<aside class="card sum" aria-live="polite">
+<h3>Resumen</h3><ul id="lines"></ul>
+<div id="disc" style="color:var(--mut);font-size:.9rem"></div>
+<div class="tot"><span>Total</span><span id="total">USD 0</span></div>
+<small style="color:var(--mut)">Combo Sismo + Puente a USD 59 aplicado automáticamente.</small>
+</aside>
+</div>
+</section>
+
+<section id="talleres">
+<h2>Talleres y Copa Resiste</h2>
+<div class="grid">
+<div class="card"><span class="tag">USD 120 por taller</span><h3>Taller “Construye y sacude”</h3><p>2 horas, hasta 30 estudiantes, materiales incluidos, mesas demostrativas y competencia final.</p></div>
+<div class="card"><span class="tag">USD 450 por torneo</span><h3>Copa Resiste</h3><p>Torneo por equipos con ranking por eficiencia (resistencia por peso o costo), jurado y premios.</p></div>
+</div>
+<div class="card" style="margin-top:14px"><h3>Solicita una fecha</h3>
+<form id="tform" novalidate>
+<div class="row"><div><label for="tt">Servicio</label><select id="tt"><option value="120">Taller “Construye y sacude” (USD 120)</option><option value="450">Copa Resiste (USD 450)</option></select></div>
+<div><label for="tp">Participantes estimados</label><input id="tp" type="number" min="5" max="200" value="30"></div></div>
+<div class="row"><div><label for="ti">Institución</label><input id="ti"><div class="err" id="e-ti"></div></div><div><label for="tc">Contacto (correo o WhatsApp)</label><input id="tc"><div class="err" id="e-tc"></div></div></div>
+<label for="tf">Fecha tentativa</label><input id="tf" type="date">
+<button class="btn" type="submit" style="margin-top:12px">Enviar solicitud</button>
+<div id="tres"></div></form></div>
+</section>
+
+<section id="como">
+<h2>Cómo funciona</h2>
+<div class="steps">
+<div><b>1. Arma</b>Construye la torre o el puente con las piezas del kit.</div>
+<div><b>2. Pruébala</b>Sacude la torre o carga el puente hasta que falle.</div>
+<div><b>3. Mide</b>El sensor registra datos y la hoja de cálculo los grafica.</div>
+<div><b>4. Analiza</b>Compara con la teoría y propón mejoras.</div>
+<div><b>5. Compite</b>Sube tu resultado al ranking de la Copa Resiste.</div>
+</div>
+<h3 style="margin-top:26px">Tabla de productos</h3>
+<div class="wrap"><table><tr><th>Producto</th><th>Qué incluye</th><th>USD</th></tr>
+<tr><td>Kit Sismo</td><td>Mesa vibratoria 5 V, sensor ESP32, 6 torres, hoja de cálculo, Cartas de Reto, 5 prácticas</td><td>35</td></tr>
+<tr><td>Kit Puente</td><td>Soporte con celda de carga, material para 3 puentes, plantilla de eficiencia, 4 prácticas</td><td>29</td></tr>
+<tr><td>Guía digital</td><td>PDF y video con planos de corte y retos extra</td><td>5</td></tr></table></div>
+</section>
+
+<section id="mercado">
+<h2>Impacto y metas del año 1</h2>
+<div class="grid">
+<div class="card"><div class="kpi">150</div>kits vendidos (80 Sismo y 70 Puente)</div>
+<div class="card"><div class="kpi">12</div>talleres y 1 Copa Resiste</div>
+<div class="card"><div class="kpi">≥ 60</div>NPS de satisfacción</div>
+<div class="card"><div class="kpi">≤ 3 %</div>de kits con defecto</div>
+</div>
+<p style="color:var(--mut)">Cada kit llevado a casa es un laboratorio más para quien no tiene uno. Garantía de 30 días, respuesta en 2 horas hábiles y repuestos por separado.</p>
+</section>
+
+<section id="faq">
+<h2>Preguntas frecuentes</h2>
+<details><summary>¿Cuándo recibo mi kit?</summary><p>Producimos por lotes de 10 kits. La entrega toma de 1 a 3 días tras confirmar el pago y recibirás un mensaje a los 7 días con la guía y un reto.</p></details>
+<details><summary>¿Es seguro?</summary><p>Funciona a 5 V por USB, sin baterías de litio sueltas. Se recomienda para mayores de 12 años con supervisión.</p></details>
+<details><summary>¿Qué pasa si una pieza llega defectuosa?</summary><p>Tiene garantía de 30 días con reposición de piezas. Los reclamos se responden en máximo 3 días.</p></details>
+<details><summary>¿Hay descuentos?</summary><p>Combo Sismo + Puente a USD 59, 10 % educativo para docentes y colegios, y 10 % por referidos.</p></details>
+<details><summary>¿Reemplaza una práctica oficial de laboratorio?</summary><p>No. Es material didáctico y no sustituye ensayos certificados ni asesoría estructural.</p></details>
+</section>
+
+<section id="mis">
+<h2>Mis reservas</h2>
+<div id="mylist" class="grid"></div>
+<p><button class="btn sec" id="clear" type="button" style="color:var(--pet)">Borrar mis reservas guardadas</button></p>
+</section>
+
+<footer>Resiste Lab · “Construye. Sacude. Aprende.” · Precios referenciales. Esta página guarda las reservas solo en tu navegador; el equipo confirmará por WhatsApp o correo.</footer>
+
+<script>
+const P=[
+{id:"sismo",n:"Kit Sismo",p:35,tag:"Más pedido",l:["Mini mesa vibratoria 5 V","Sensor de aceleración ESP32","6 torres modulares","Hoja de cálculo y 30 Cartas de Reto"]},
+{id:"puente",n:"Kit Puente",p:29,tag:"Para estructuras",l:["Soporte con celda de carga","Palillos o balsa para 3 puentes","Plantilla de carga de rotura","Guía de 4 prácticas"]},
+{id:"guia",n:"Guía digital",p:5,tag:"Hazlo tú mismo",l:["Planos de corte en PDF","Video paso a paso","Plantillas de cálculo y retos extra"]}];
+const Q={sismo:0,puente:0,guia:0};
+const $=s=>document.querySelector(s);
+const fmt=n=>"USD "+n.toFixed(2).replace(/\.00$/,"");
+const store={get(){try{return JSON.parse(localStorage.getItem("rl_res")||"[]")}catch(e){return []}},set(v){try{localStorage.setItem("rl_res",JSON.stringify(v))}catch(e){}}};
+let mem=store.get();
+
+function catalog(){
+$("#catalog").innerHTML=P.map(x=>`<div class="card prod"><span class="tag">${x.tag}</span><h3>${x.n}</h3><div class="price">${fmt(x.p)}</div><ul>${x.l.map(i=>`<li>${i}</li>`).join("")}</ul>
+<div class="qty"><button type="button" data-d="-1" data-id="${x.id}" aria-label="Quitar ${x.n}">−</button><output id="q-${x.id}">0</output><button type="button" data-d="1" data-id="${x.id}" aria-label="Agregar ${x.n}">+</button></div></div>`).join("");
+}
+function calc(){
+const pairs=Math.min(Q.sismo,Q.puente);
+let sub=Q.sismo*35+Q.puente*29+Q.guia*5,combo=pairs*5;
+const d=$("#desc").value,after=sub-combo,pct=d==="0"?0:.1,dis=after*pct;
+return{sub,combo,pairs,dis,total:after-dis,pct};
+}
+function render(){
+const c=calc(),items=P.filter(x=>Q[x.id]>0);
+P.forEach(x=>$("#q-"+x.id).textContent=Q[x.id]);
+$("#lines").innerHTML=items.length?items.map(x=>`<li><span>${Q[x.id]} × ${x.n}</span><span>${fmt(Q[x.id]*x.p)}</span></li>`).join(""):"<li><span>Aún no eliges nada</span></li>";
+$("#disc").innerHTML=(c.combo?`Combo (${c.pairs}): −${fmt(c.combo)}<br>`:"")+(c.dis?`Descuento 10 %: −${fmt(c.dis)}`:"");
+$("#total").textContent=fmt(c.total);
+$("#navcart").textContent="Reserva ("+(Q.sismo+Q.puente+Q.guia)+")";
+document.querySelectorAll(".add").forEach(b=>{const q=Q[b.dataset.id];b.textContent=q?`Agregado (${q}) · sumar otro`:b.dataset.l});
+}
+$("#catalog").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const id=b.dataset.id;Q[id]=Math.max(0,Math.min(20,Q[id]+ +b.dataset.d));render()});
+$("#desc").addEventListener("change",render);
+
+function setErr(id,m){$("#e-"+id).textContent=m||"";return !m}
+$("#form").addEventListener("submit",e=>{
+e.preventDefault();
+let ok=true;
+ok&=setErr("nom",$("#nom").value.trim().length<3?"Escribe tu nombre completo.":"");
+ok&=setErr("mail",/^\S+@\S+\.\S+$/.test($("#mail").value)?"":"Escribe un correo válido.");
+ok&=setErr("wa",$("#wa").value.replace(/\D/g,"").length<7?"Escribe un número de WhatsApp válido.":"");
+const f=$("#fecha").value;
+ok&=setErr("fecha",!f||f<new Date().toISOString().slice(0,10)?"Elige una fecha desde hoy.":"");
+ok&=setErr("ter",$("#ter").checked?"":"Debes aceptar para continuar.");
+const n=Q.sismo+Q.puente+Q.guia;
+if(!n){ok=false;$("#result").innerHTML='<div class="ok" role="alert">Elige al menos un producto en la sección Kits.</div>'}
+if(!ok)return;
+const c=calc(),code="RL-"+Math.random().toString(36).slice(2,7).toUpperCase();
+const r={code,nom:$("#nom").value.trim(),mail:$("#mail").value,wa:$("#wa").value,fecha:f,ent:$("#ent").selectedOptions[0].text,pago:$("#pago").value,items:P.filter(x=>Q[x.id]).map(x=>Q[x.id]+" × "+x.n).join(", "),total:c.total};
+mem.unshift(r);store.set(mem);
+$("#result").innerHTML=`<div class="ok" role="status"><h3>Reserva confirmada</h3><div class="code">${code}</div>
+<p>${r.items}<br>Total: <b>${fmt(r.total)}</b> · ${r.pago}<br>Entrega: ${r.ent}, desde el ${r.fecha}.</p>
+<p>Te escribiremos a ${r.mail} o por WhatsApp para coordinar el pago. Guarda tu código.</p>
+<button class="btn sec" type="button" id="cp" style="color:var(--pet)">Copiar resumen</button></div>`;
+$("#cp").onclick=()=>{try{navigator.clipboard.writeText(`Resiste Lab ${code}: ${r.items}. Total ${fmt(r.total)}. ${r.nom}, ${r.wa}`);$("#cp").textContent="Copiado"}catch(x){$("#cp").textContent="Selecciona y copia el código"}};
+Object.keys(Q).forEach(k=>Q[k]=0);render();mine();
+});
+
+$("#tform").addEventListener("submit",e=>{
+e.preventDefault();
+let ok=true;
+ok&=setErr("ti",$("#ti").value.trim()?"":"Escribe el nombre de la institución.");
+ok&=setErr("tc",$("#tc").value.trim().length<7?"Escribe un correo o WhatsApp.":"");
+if(!ok)return;
+const s=$("#tt").selectedOptions[0].text,code="TL-"+Math.random().toString(36).slice(2,6).toUpperCase();
+mem.unshift({code,nom:$("#ti").value.trim(),items:s+" · "+$("#tp").value+" participantes",fecha:$("#tf").value||"por definir",total:+$("#tt").value,taller:1});
+store.set(mem);mine();
+$("#tres").innerHTML=`<div class="ok" role="status">Solicitud ${code} registrada. Te contactaremos para confirmar fecha y logística.</div>`;
+});
+
+function mine(){
+$("#mylist").innerHTML=mem.length?mem.map(r=>`<div class="card"><div class="code" style="font-size:1.3rem">${r.code}</div><b>${esc(r.nom)}</b><br>${esc(r.items)}<br><span style="color:var(--mut)">${r.taller?"Fecha":"Desde"}: ${esc(r.fecha||"")} · ${fmt(r.total)}</span></div>`).join(""):'<div class="card">Todavía no tienes reservas. Elige un kit para empezar.</div>';
+}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+$("#clear").onclick=()=>{mem=[];store.set(mem);mine()};
+
+/* Simulador de mesa vibratoria */
+const tower=$("#tower");
+function build(){
+const n=+$("#nb").value;$("#nbv").textContent=n;
+tower.innerHTML="";tower.style.transform="";
+for(let i=0;i<n;i++){const b=document.createElement("div");b.className="blk"+(i===n-1?" top":"");b.style.width=(150-i*12)+"px";tower.appendChild(b)}
+}
+$("#nb").oninput=build;$("#int").oninput=()=>{$("#intv").textContent=$("#int").value};
+let anim=0;
+$("#shake").onclick=()=>{
+build();
+const n=+$("#nb").value,I=+$("#int").value,cap=11-n+3; /* torres más bajas resisten más */
+const blks=[...tower.children],t0=performance.now(),dur=1800;
+cancelAnimationFrame(anim);
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const step=t=>{
+const k=(t-t0)/dur;
+if(k>=1){tower.style.transform="";end();return}
+if(!reduce)tower.style.transform=`translateX(${Math.sin(t/35)*I*1.6*(1-k)}px)`;
+anim=requestAnimationFrame(step)};
+anim=requestAnimationFrame(step);
+function end(){
+const fall=I>cap?Math.min(n,Math.ceil((I-cap)*1.2)):0;
+if(fall){const top=blks.slice(n-fall);top.forEach((b,i)=>{b.style.transform=`translate(${(i%2?1:-1)*(40+i*18)}px,${60+i*6}px) rotate(${(i%2?1:-1)*(25+i*10)}deg)`;b.style.opacity=".35"});
+$("#verd").textContent=`Cayeron ${fall} piso(s). Prueba con menos pisos o menor intensidad.`}
+else $("#verd").textContent=`La torre resiste. Su límite aproximado es intensidad ${cap}.`;
+}
+$("#verd").textContent="Sacudiendo...";
+};
+const cards=["Sismo de gran intensidad: sube la intensidad a 8.","Suelo blando: construye con 6 pisos.","Presupuesto de 20 piezas: usa solo 4 pisos.","Reto de eficiencia: la torre más alta que resista intensidad 6.","Último piso naranja: no puede caer."];
+$("#card").onclick=()=>{$("#verd").textContent="Reto: "+cards[Math.floor(Math.random()*cards.length)]};
+
+/* fecha mínima y arranque */
+const today=new Date().toISOString().slice(0,10);$("#fecha").min=today;$("#tf").min=today;
+/* Pestañas */
+document.querySelectorAll(".tb").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tb").forEach(x=>{x.classList.toggle("on",x===b);x.setAttribute("aria-selected",x===b)});document.querySelectorAll(".pn").forEach(p=>p.hidden=p.id!=="p-"+b.dataset.t)});
+document.querySelectorAll(".add").forEach(b=>b.onclick=()=>{Q[b.dataset.id]=Math.min(20,Q[b.dataset.id]+1);render()});
+
+/* Simulador del puente */
+const DF={viga:.5,warren:1.4,pratt:1.2};
+function draw(d,broken,load){
+const des=$("#dis").value,y=t=>110+4*t*(1-t)*d,x=t=>50+300*t,pts=(off)=>Array.from({length:25},(_,i)=>x(i/24)+","+(y(i/24)+off)).join(" ");
+let h="";
+if(broken){h='<line x1="50" y1="110" x2="195" y2="172" stroke="#e8772e" stroke-width="5" stroke-linecap="round"/><line x1="350" y1="110" x2="208" y2="178" stroke="#e8772e" stroke-width="5" stroke-linecap="round"/>'}
+else{
+h=`<polyline points="${pts(0)}" fill="none" stroke="#e8772e" stroke-width="5" stroke-linecap="round"/>`;
+if(des!=="viga"){
+h+=`<polyline points="${pts(26)}" fill="none" stroke="#fff" stroke-width="4"/>`;
+const n=8;
+if(des==="warren"){h+=`<polyline points="${Array.from({length:n+1},(_,i)=>x(i/n)+","+(y(i/n)+(i%2?26:0))).join(" ")}" fill="none" stroke="#fff" stroke-width="3"/>`}
+else{for(let i=0;i<=n;i++){const t=i/n;h+=`<line x1="${x(t)}" y1="${y(t)}" x2="${x(t)}" y2="${y(t)+26}" stroke="#fff" stroke-width="3"/>`;if(i<n){const t2=(i+1)/n,l=i<n/2;h+=l?`<line x1="${x(t)}" y1="${y(t)}" x2="${x(t2)}" y2="${y(t2)+26}" stroke="#fff" stroke-width="2"/>`:`<line x1="${x(t2)}" y1="${y(t2)}" x2="${x(t)}" y2="${y(t)+26}" stroke="#fff" stroke-width="2"/>`}}}
+}}
+$("#bridge").innerHTML=h;
+$("#wt").innerHTML=(!broken&&load>0)?`<rect x="176" y="${110+d-30}" width="48" height="26" rx="3" fill="#fff"/><text x="200" y="${110+d-12}" text-anchor="middle" font-size="13" font-weight="700" fill="#1F3A4D">${load.toFixed(1)} kg</text>`:"";
+}
+let ba=0,last=null,rk=[];
+function rkr(){$("#rk").innerHTML=rk.length?rk.sort((a,b)=>b.ef-a.ef).slice(0,5).map(r=>`<li>${esc(r.name)}: ${r.ef.toFixed(0)}× (${r.cap.toFixed(1)} kg)</li>`).join(""):"<li>Ranking de la Copa vacío. Sé el primero.</li>"}
+$("#pal").oninput=()=>{$("#palv").textContent=$("#pal").value;draw(0,false,0)};
+$("#dis").onchange=()=>draw(0,false,0);
+$("#load").onclick=()=>{
+cancelAnimationFrame(ba);
+const n=+$("#pal").value,f=DF[$("#dis").value],cap=n*f*0.12*(0.92+Math.random()*0.16),pw=n*0.3,t0=performance.now(),dur=matchMedia("(prefers-reduced-motion:reduce)").matches?200:2600;
+$("#bv").textContent="Cargando...";$("#addrk").style.display="none";
+const s=t=>{const k=Math.min(1,(t-t0)/dur);draw(26*Math.pow(k,1.6),false,cap*k);
+if(k<1){ba=requestAnimationFrame(s);return}
+draw(0,true,0);last={cap,ef:cap*1000/pw};
+$("#bv").textContent=`Falló con ${cap.toFixed(1)} kg. Peso: ${pw.toFixed(0)} g. Eficiencia: ${last.ef.toFixed(0)}× su peso.`;
+$("#addrk").style.display=""};
+ba=requestAnimationFrame(s)};
+$("#rkbtn").onclick=()=>{if(!last)return;rk.push({name:$("#team").value.trim()||"Equipo "+(rk.length+1),cap:last.cap,ef:last.ef});last=null;$("#addrk").style.display="none";$("#bv").textContent="Resultado subido al ranking.";rkr()};
+
+/* Calculadoras de la guía */
+function g1(){const o=+$("#go").value,t=+$("#gt").value;$("#gr1").textContent=o>0&&t>0?`Periodo T = ${(t/o).toFixed(3)} s · frecuencia f = ${(o/t).toFixed(2)} Hz`:"Completa ambos datos."}
+function g2(){const c=+$("#gc").value,p=+$("#gp").value;$("#gr2").textContent=c>0&&p>0?`Eficiencia = ${(c/p).toFixed(0)}× su propio peso`:"Completa ambos datos."}
+function g3(){const n=[...document.querySelectorAll(".ck")].filter(x=>x.checked).length;$("#gpg").value=n;$("#gpt").textContent=n+" de 5 prácticas"+(n===5?" · ¡completaste la guía!":"")}
+$("#go").oninput=$("#gt").oninput=g1;$("#gc").oninput=$("#gp").oninput=g2;$("#cks").onchange=g3;
+g1();g2();draw(0,false,0);rkr();
+
+catalog();render();build();mine();
+</script>
+</body>
+</html>
